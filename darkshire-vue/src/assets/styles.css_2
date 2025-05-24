@@ -1,0 +1,62 @@
+/* src/assets/styles.css */
+
+@font-face {
+  font-family: 'Morpheus';
+  src:
+    url('./fonts/morpheus-webfont.woff2') format('woff2'),
+    url('./fonts/morpheus-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: url('../assets/parchment_2.jpg') center/cover fixed;
+  color: #d4b38b;
+  /* font-family: 'Times New Roman', serif; */
+  font-family: 'Morpheus';
+}
+.nav-bar {
+  display: flex;
+  gap: 1rem;
+  background: rgba(20, 20, 20, 0.9);
+  padding: 0.5rem;
+  border-bottom: 2px solid #5c3a21;
+}
+.nav-bar a {
+  color: #d4b38b;
+  text-decoration: none;
+  /* font-family: Verdana, sans-serif; */
+  font-family: 'Morpheus';
+}
+.nav-bar a.router-link-active {
+  text-decoration: underline;
+}
+.container {
+  max-width: 600px;
+  margin: 2em auto;
+  padding: 1em;
+  background: rgba(20, 20, 20, 0.8);
+  border: 3px solid #5c3a21;
+  border-radius: 8px;
+  box-shadow: 0 0 10px black;
+  font-family: 'Morpheus';
+}
+button {
+  /* font-family: Verdana, sans-serif; */
+  font-family: 'Morpheus';
+  background: #2a4b14;
+  color: #d4b38b;
+  border: 2px outset #5c3a21;
+  padding: 0.5em 1em;
+  cursor: pointer;
+}
+button:hover {
+  border-style: inset;
+}
+.char-card {
+  border-bottom: 1px dotted #5c3a21;
+  margin-bottom: 1em;
+  padding-bottom: 0.5em;
+}
