@@ -11,7 +11,7 @@ export interface Character {
 }
 
 const API = axios.create({
-  baseURL: 'http://localhost:5000/api/characters'
+  baseURL: 'https://shadowheartlover.biz/api/characters'
 });
 
 export const listCharacters = async (): Promise<Character[]> => {

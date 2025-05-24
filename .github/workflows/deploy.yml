@@ -20,22 +20,23 @@ jobs:
             set -e
 
             # go to your app folder
-            cd ~/app
+            cd ~/wow_website
 
             # pull the latest code
-            git pull origin main
+            git pull origin master
 
+            cd flask_backend
             # backend: reinstall/update deps
             source .venv/bin/activate
-            pip install -r requirements.txt
+            # pip install -r requirements.txt
 
             # frontend: rebuild
-            cd darkshire-vue
+            cd ../darkshire-vue
             npm ci
             npm run build
             # copy to Nginx webroot
-            sudo cp -r dist/* /var/www/html/
-            cd ..
+            sudo cp -r dist/* /opt/bitnami/nginx/html/
+            cd ~
 
             # restart services
             sudo systemctl restart darkshire
