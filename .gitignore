@@ -1,2 +1,4 @@
 darkshire-vue/node_modules
 darkshire-vue/.vscode
+flask_backend/uploads
+flask_backend/character.db
