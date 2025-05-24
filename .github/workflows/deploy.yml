@@ -1,0 +1,42 @@
+name: Deploy to Lightsail
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: SSH & Deploy
+        uses: appleboy/ssh-action@v1.7.0
+        with:
+          host: ${{ secrets.LIGHTSAIL_HOST }}
+          username: ${{ secrets.LIGHTSAIL_USER }}
+          key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
+          port: ${{ secrets.LIGHTSAIL_PORT }}
+          script: |
+            set -e
+
+            # go to your app folder
+            cd ~/app
+
+            # pull the latest code
+            git pull origin main
+
+            # backend: reinstall/update deps
+            source .venv/bin/activate
+            pip install -r requirements.txt
+
+            # frontend: rebuild
+            cd darkshire-vue
+            npm ci
+            npm run build
+            # copy to Nginx webroot
+            sudo cp -r dist/* /var/www/html/
+            cd ..
+
+            # restart services
+            sudo systemctl restart darkshire
+            sudo systemctl restart nginx
